@@ -38,7 +38,7 @@ enum
 };
 
 /**
- * energy classes
+ * energy binding classes
  * There are "no" attack spells, only spells focused on the enemy.
  * Spells will be built from these type.
  */
@@ -91,18 +91,47 @@ public:
 
 //==============================================
 /**
+ * These are the three basic spell types
+ * Simple spell is a single element single binding magic that can be used to build other spells (almost like the root of a tree)
+ * Dual Binding spells have one element but two binding capabilities and are probably great for enhancing chains
+ * Dual Element spells are used to create for building the physics trees
+ */
+/**
  * Simple spell is a single-element single-typed magic that can be used to build other spells
  */
 class SimpleSpell: public Magic
 {
 
 private:
-  int _energy_class;
+  int _binding_class;
   float _strength;
-
+  float _binding_strength;
 public:
   SimpleSpell(int base_element, int energy_class, float strength); //Can only set the simple spell type at initialization
 
 };
+
+class DualBindingSpell: public Magic
+{
+private:
+  int _second_binding;
+  float _strength;
+  float _binding_strength;
+public:
+  DualBindingSpell(int base_element, int first_binding, int second_binding, float strength);
+};
+
+class DualElementSpell: public Magic
+{
+private:
+  int _second_element;
+  float _strength;
+  float _binding_strength;
+  float _elem_balance;
+public:
+  DualElementSpell(int first_element, int second_element, int binding);
+
+};
+
 
 #endif /* MAGIC_H_ */

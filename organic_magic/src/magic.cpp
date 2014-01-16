@@ -19,11 +19,11 @@ SimpleSpell::SimpleSpell(int base_element, int energy_class, float strength)
 
   if( energy_class <  energy_class_end_e )
     {
-      _energy_class = energy_class;
+      _binding_class = energy_class;
     }
   else
     {
-      _energy_class = collect_e;
+      _binding_class = collect_e;
       MAGIC_PRINTF("ERR: invalid energy class!\n");
     }
 
